@@ -1,3 +1,6 @@
+const mongoose = require('mongoose')
+
+
 const BlogSchema = mongoose.Schema({
     id: {
       type: String,
@@ -11,7 +14,7 @@ const BlogSchema = mongoose.Schema({
         type: Array,
         default: []
     },
-    stepbyStep: {
+    stepByStep: {
         type: Array,
         default: []
     },
@@ -32,4 +35,18 @@ const BlogSchema = mongoose.Schema({
     }
   })
 
-  const Blog = module.exports = mongoose.model('Blog', BlogSchema)
+//   const Blog = module.exports = mongoose.model('Blog', BlogSchema)
+
+
+  module.exports = {
+      Blog: mongoose.model('Blog', BlogSchema),
+
+      addBlogPost: function(blog, callback) {
+        let b = new this.Blog({
+            id: blog.id,
+            title: blog.title
+          });
+        
+        blog.save(callback);
+      }
+  }
