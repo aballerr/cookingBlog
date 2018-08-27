@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const test = require('./test');
+
 const blog = require('./models/blog');
 const mongoose = require('mongoose');
 const databaseConfig = require('./config/database').database
@@ -24,3 +24,13 @@ let blogJson = {
     id: 1,
     title: "hello world"
 }
+
+
+// blog.addBlogPost(blogJson, (err, success) => {
+//     if(err) {
+//         console.log(err)
+//     }
+//     else {
+//         console.log(success);
+//     }
+// })
