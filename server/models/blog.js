@@ -52,9 +52,9 @@ function getNextId() {
 
 }
 
-function _addBlogPost(blog, callback) {
 
-    Blog.collection.stats(function(err, results) {
+function _addBlogPost(blog, callback) {
+    Blog.collection.stats(function (err, results) {
         let id = results.count + 1;
 
         let b = new Blog({
@@ -66,8 +66,15 @@ function _addBlogPost(blog, callback) {
     })
 }
 
-function _queryAll(callback){
+
+
+/* Functions for Querying */
+function _queryAll(callback) {
     Blog.find({}, callback);
+}
+
+function _queryById(id, callback) {
+    Blog.find({id: id}, callback);
 }
 
 function _deleteAll(callback) {
@@ -78,5 +85,6 @@ module.exports = {
     Blog: mongoose.model('Blog', BlogSchema),
     addBlogPost: _addBlogPost,
     queryAll: _queryAll,
+    queryById: _queryById,
     deleteAll: _deleteAll
 }
